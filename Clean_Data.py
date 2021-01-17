@@ -69,6 +69,7 @@ def get_clean_df():
     #print(df.columns)
     
     
+    
     clean_df = pd.get_dummies(df,columns=['Relationship',
                                           'Workclass',
                                           'Bachelors',
@@ -80,8 +81,9 @@ def get_clean_df():
     
     
     print('Data Frame is clean and ready to synthethize')
+    print('*******************************************')
     
-    return clean_df
+    return clean_df, df
 
 
 
