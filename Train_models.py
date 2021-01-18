@@ -23,19 +23,26 @@ from sklearn.neural_network import MLPClassifier
 
 from clean_data import get_clean_df
 
-df = get_clean_df()[0]
 
-def cross_val_train_models():
+
+
+
+
+
+def cross_val_train_models(df_train):
     
     print("Cross validation and training the models, showing best parameters")
     print("-----------------------------------------------------")
     print(" ")
     
+    df = get_clean_df(df_train)[0] # returns a tuple, we need tuple[0]
+    
+    #print(df.columns)
     
     # --- Train, Test split
     X = df.drop('less than 50K',axis=1)
     y = df['less than 50K']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
+    #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
     
     # ---------------decision tree with grid search------------
     '''
@@ -56,7 +63,7 @@ def cross_val_train_models():
     DT_gs = pickle.load(file)
     file.close()
     
-    print('Best Decition Tree parameters:',DT_gs.best_params_,'best score:',DT_gs.best_score_)
+    print('Best Decition Tree parameters:',DT_gs.best_params_,'best score:',f'{DT_gs.best_score_:0.4f}')
     
     # --- Random Forest with Grid Search
     '''
@@ -74,7 +81,7 @@ def cross_val_train_models():
     '''
     # -- loading the model 
     
-    '''
+    
     # RandomForest_gs.model is in a rar , its around 200mb so it needs to be unzipped
     file2 = open("RandomForest_gs.model",'rb')
     rf_gs = pickle.load(file2)
@@ -82,8 +89,8 @@ def cross_val_train_models():
     
     
     print('------------------------------------')
-    print('best score for RandomForest :',rf_gs.best_score_,'best params:',rf_gs.best_params_)
-    '''
+    print('best score for RandomForest :',f'{rf_gs.best_score_:0.4f}','best params:',rf_gs.best_params_)
+    
     
     #----- Neural Network - mlp
     '''
@@ -103,7 +110,7 @@ def cross_val_train_models():
     clf_NN = pickle.load(file3)
     file3.close()
     print('------------------------------------')
-    print('Neural Network best score:',clf_NN.best_score_,'best params:',clf_NN.best_params_)
+    print('Neural Network best score:',f'{clf_NN.best_score_:0.4f}','best params:',clf_NN.best_params_)
 
 
 

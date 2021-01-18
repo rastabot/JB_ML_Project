@@ -9,12 +9,12 @@ from clean_data import get_clean_df
 
 print('Loading data and showing graphs ...','\n\n')
 
-df = get_clean_df()[1]
+#df = get_clean_df()[1]
 
 #print(df.columns)
 
 
-def print_graphs():
+def print_graphs(df):
            
     fig, axs = plt.subplots(2,1, figsize=(16,8))    
         

@@ -7,7 +7,9 @@ and reading it for a data frame .
 import numpy as np
 import pandas as pd
 import seaborn as sb
-import matplotlib.pyplot as plt
+
+from split_data import train_test_data
+
 
 #================
 '''
@@ -26,9 +28,15 @@ def fifty(val):
 sb.set_style("darkgrid")
 sb.set(rc={'figure.figsize':(11.7,8.27)})
 
-def get_clean_df():
 
-    df = pd.read_csv('adult.data')
+
+def get_clean_df(df):
+    
+    '''
+    returns a tuple , (df after get_dummies, df before get_dummies)
+    '''
+
+    #df = pd.read_csv('adult.data')
     
     # -------- renaming columns
     df.rename(columns={
