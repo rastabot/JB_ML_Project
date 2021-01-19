@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sb
 
-from split_data import train_test_data
+#from split_data import train_test_data
 
 
 #================
@@ -27,8 +27,6 @@ def fifty(val):
 #-- set seaborn style
 sb.set_style("darkgrid")
 sb.set(rc={'figure.figsize':(11.7,8.27)})
-
-
 
 def get_clean_df(df):
     
@@ -88,9 +86,11 @@ def get_clean_df(df):
                                           'Country'],drop_first=True)
     
     
-    print('Data Frame is clean and ready to synthethize')
-    print('*******************************************')
+    #print('Data Frame is clean and ready to synthethize')
+    #print('*******************************************')
     
+    #clean_df is for train and testing, df is only for graphs
+    #clean_df is after get_dummies
     return clean_df, df
 
 

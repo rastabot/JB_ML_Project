@@ -4,17 +4,26 @@
 import seaborn as sb
 import matplotlib.pyplot as plt
 
+import pandas as pd
+
 
 from clean_data import get_clean_df
 
-print('Loading data and showing graphs ...','\n\n')
+#print('Loading data and showing graphs ...','\n\n')
 
-#df = get_clean_df()[1]
+df_raw = pd.read_csv('adult.data')
+df = get_clean_df(df_raw)[1]
 
 #print(df.columns)
 
 
-def print_graphs(df):
+def print_graphs():
+    
+    #df = get_clean_df(df_)[1]
+    
+    print(' in graphs .......','\n\n')
+    #print(df.columns)
+    
            
     fig, axs = plt.subplots(2,1, figsize=(16,8))    
         

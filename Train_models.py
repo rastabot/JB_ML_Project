@@ -1,5 +1,5 @@
 '''
- cross-validation  and traing 3 models:
+ cross-validation  and traning 3 models:
     dessision trees, Random Forest and Neural Networks
 '''
 
@@ -21,7 +21,7 @@ from sklearn.ensemble import BaggingClassifier,RandomForestClassifier
 
 from sklearn.neural_network import MLPClassifier    
 
-from clean_data import get_clean_df
+#from clean_data import get_clean_df
 
 
 
@@ -33,16 +33,15 @@ def cross_val_train_models(df_train):
     
     print("Cross validation and training the models, showing best parameters")
     print("-----------------------------------------------------")
-    print(" ")
-    
-    df = get_clean_df(df_train)[0] # returns a tuple, we need tuple[0]
+    print(" ")  
+   
     
     #print(df.columns)
     
-    # --- Train, Test split
-    X = df.drop('less than 50K',axis=1)
-    y = df['less than 50K']
-    #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
+    # --- ----------------
+    #X = df.drop('less than 50K',axis=1)
+    #y = df['less than 50K']
+    
     
     # ---------------decision tree with grid search------------
     '''
@@ -57,7 +56,7 @@ def cross_val_train_models(df_train):
     filehandler1.close()
     '''
     
-    # -- loading the model 
+    # -- loading decision Tree model 
     
     file = open("DT_gs.model",'rb')
     DT_gs = pickle.load(file)
@@ -79,7 +78,7 @@ def cross_val_train_models(df_train):
     filehandler3.close()
     
     '''
-    # -- loading the model 
+    # -- loading Random Forest model 
     
     
     # RandomForest_gs.model is in a rar , its around 200mb so it needs to be unzipped
@@ -106,11 +105,15 @@ def cross_val_train_models(df_train):
     filehandler4.close()
     
     '''
+    
+    #-- Loading Neural Network model
     file3 = open("NeuralNetwrok_GsCv.model",'rb')
     clf_NN = pickle.load(file3)
     file3.close()
     print('------------------------------------')
     print('Neural Network best score:',f'{clf_NN.best_score_:0.4f}','best params:',clf_NN.best_params_)
+    
+    print('------------------------------------','\n\n')
 
 
 
