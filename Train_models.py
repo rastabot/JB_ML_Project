@@ -1,32 +1,12 @@
 '''
  cross-validation  and traning 3 models:
-    dessision trees, Random Forest and Neural Networks
-'''
+    dessision trees, Random Forest and Neural Networks'''
 
-import numpy as np
-import pandas as pd
-import seaborn as sb
-import sklearn.linear_model as skl
-import matplotlib.pyplot as plt
 
 import pickle
-
-from sklearn.tree import DecisionTreeClassifier
-
-from sklearn.model_selection import train_test_split,KFold,cross_val_score,StratifiedKFold,GridSearchCV
-                                    
-from sklearn.metrics import classification_report,confusion_matrix,roc_curve,auc
-                            
-from sklearn.ensemble import BaggingClassifier,RandomForestClassifier
-
-from sklearn.neural_network import MLPClassifier    
+    
 
 #from clean_data import get_clean_df
-
-
-
-
-
 
 
 def cross_val_train_models(df_train):

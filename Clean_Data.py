@@ -4,7 +4,6 @@ and reading it for a data frame .
 '''
 
 #--------------
-import numpy as np
 import pandas as pd
 import seaborn as sb
 
